@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Listado de productos</title>
 </head>
 <body>
-    Si ha cargado esto es que funciona el controlador y ha cargado la vista
+    <div id="productos">
+        <div>
+            <h2 th:test="${producto.titulo}">Titulo</h2>
+            Precio : <span th:test="${producto.precio}">Precio</span>
+            Cantidad : <span th:test="${producto.cantidad}">Cantidad</span>
+        </div>
+    </div>
 </body>
 </html>

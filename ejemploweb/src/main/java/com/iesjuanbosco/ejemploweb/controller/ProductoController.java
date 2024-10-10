@@ -5,6 +5,8 @@ import com.iesjuanbosco.ejemploweb.repository.ProductoRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,12 +21,17 @@ public class ProductoController {
         this.productoRepository = repository;
     }
 
-    /* con la notacion GetMapping le indicamos a Spring que el siguiente metodo
-        se va a ejecutar cuando el usuario acceda a la url GET http://localhost/productos*/
-    @GetMapping("/productos")
-    public String findAll(){
+    @GetMapping("/productos2")
+    @ResponseBody
+
+    public String index(){
         List<Producto> productos = this.productoRepository.findAll();
-        return "producto-list";
+        String HTML = new stringBuilder("<html><body>");
+        productos.forEach(producto -> {
+            HTML=append("<p>" + producto.getTitulo() + "<p>");
+        });
+        HTML += "</body></html";
+        return HTML;
 
     }
 
